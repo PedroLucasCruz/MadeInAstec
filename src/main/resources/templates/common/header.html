@@ -5,14 +5,14 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<title>Le's Bookstore</title>
+<title>MUSICSTORE</title>
 
 <!-- Bootstrap core CSS -->
 <link href="/css/bootstrap.min.css" rel="stylesheet" />
 
 <link href="/css/non-responsive.css" rel="stylesheet" />
 
-<!-- data table -->
+<!-- data tabela -->
 <link th:href="@{/css/jquery.dataTables.min.css}" rel="stylesheet" />
 <link th:href="@{/css/dataTables.bootstrap.min.css}" rel="stylesheet" />
 
@@ -32,40 +32,30 @@
 		<nav class="navbar navbar-default navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" th:href="@{/}">LE'S BOOKSTORE</a>
+					<a class="navbar-brand" th:href="@{/}">MUSICSTORE</a>
 				</div>
 				<div id="navbar">
 					<ul class="nav navbar-nav navbar-left">
-						<li class="dropdown"><a th:href="@{/bookshelf}"
-							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">BOOKS <span
-								class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a th:href="@{/bookshelf}">Browse the bookshelf</a></li>
-								<li><a th:href="@{/hours}">Store hours &#38; Directions</a></li>
-								<li><a th:href="@{/faq}">FAQ</a></li>
-
-							</ul></li>
+						
 						<form class="navbar-form" th:action="@{/searchBook}" method="post">
 							<div class="form-group">
 								<input type="text" name="keyword" class="form-control"
-									placeholder="Book title" />
+									placeholder="Pesquise aqui" />
 							</div>
-							<button type="submit" class="btn btn-default">Search</button>
+							<button type="submit" class="btn btn-default">Procurar</button>
 						</form>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a th:href="@{/shoppingCart/cart}">SHOPPING CART</a></li>
-						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">MY
-								ACCOUNT</a></li>
+						<li><a th:href="@{/shoppingCart/cart}">CARRINHO</a></li>
+						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">MINHA CONTA</a></li>
 						<li><a sec:authorize="isAuthenticated()"
-							th:href="@{/myProfile}">MY ACCOUNT</a></li>
-						<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
+							th:href="@{/myProfile}">MINHA CONTA</a></li>
+						<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">DESLOGAR</a></li>
 					</ul>
 				</div>
-				<!--/.nav-collapse -->
+				
 			</div>
-			<!--/.container-fluid -->
+			
 		</nav>
 	</div>
 
