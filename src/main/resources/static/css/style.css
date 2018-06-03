@@ -10,11 +10,11 @@ hr {
 }
 
 .container {
-	width: 90%;
+	width: 80%;
 }
 
 .banner {
-	background-image: url("/image/bgline.png");
+	background-color: black;
 }
 
 .page-top {
