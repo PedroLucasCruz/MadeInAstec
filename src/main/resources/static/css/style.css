@@ -1,5 +1,5 @@
 body {
- 
+ background-color: #eceff1;
 }
 
 hr {
@@ -60,7 +60,7 @@ hr {
 }
 
 footer {
-    background-color: #0c1a1e;
+    background-color: #9e9e9e;
     min-height: 250px;
     font-family: 'Open Sans', sans-serif;
 }
