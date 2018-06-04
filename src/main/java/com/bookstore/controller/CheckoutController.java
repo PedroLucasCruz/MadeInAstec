@@ -130,7 +130,7 @@ public class CheckoutController {
 		for (UserPayment userPayment : userPaymentList) {
 			if (userPayment.isDefaultPayment()) {
 				paymentService.setByUserPayment(userPayment, payment);
-				billingAddressService.setByUserBilling(userPayment.getUserBilling(), billingAddress);
+				billingAddressService.setarPeloFaturamento(userPayment.getUserBilling(), billingAddress);
 			}
 		}
 
@@ -268,7 +268,7 @@ public class CheckoutController {
 
 			List<CartItem> cartItemList = cartItemService.findByShoppingCart(user.getShoppingCart());
 
-			billingAddressService.setByUserBilling(userBilling, billingAddress);
+			billingAddressService.setarPeloFaturamento(userBilling, billingAddress);
 
 			model.addAttribute("shippingAddress", shippingAddress);
 			model.addAttribute("payment", payment);

@@ -19,7 +19,7 @@ public class BookServiceImpl implements BookService{
 		bookRepository.delete(id);
 	}
         
-        public Book save(Book book) {
+        public Book salvar(Book book) {
 		return bookRepository.save(book);
 	}
         

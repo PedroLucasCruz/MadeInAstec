@@ -7,7 +7,7 @@ import com.bookstore.domain.Book;
 public interface BookService {
 	List<Book> findAll ();
 	
-        Book save(Book book);
+        Book salvar(Book book);
         
 	Book findOne(Long id);
 	

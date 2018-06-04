@@ -9,16 +9,16 @@ import com.bookstore.service.BillingAddressService;
 @Service
 public class BillingAddressServiceImpl implements BillingAddressService{
 	
-	public BillingAddress setByUserBilling(UserBilling userBilling, BillingAddress billingAddress) {
-		billingAddress.setBillingAddressName(userBilling.getUserBillingName());
-		billingAddress.setBillingAddressStreet1(userBilling.getUserBillingStreet1());
-		billingAddress.setBillingAddressStreet2(userBilling.getUserBillingStreet2());
-		billingAddress.setBillingAddressCity(userBilling.getUserBillingCity());
-		billingAddress.setBillingAddressState(userBilling.getUserBillingState());
-		billingAddress.setBillingAddressCountry(userBilling.getUserBillingCountry());
-		billingAddress.setBillingAddressZipcode(userBilling.getUserBillingZipcode());
+	public BillingAddress setarPeloFaturamento(UserBilling userBilling, BillingAddress enderecoDeCobranca) {
+		enderecoDeCobranca.setBillingAddressName(userBilling.getUserBillingName());
+		enderecoDeCobranca.setBillingAddressStreet1(userBilling.getUserBillingStreet1());
+		enderecoDeCobranca.setBillingAddressStreet2(userBilling.getUserBillingStreet2());
+		enderecoDeCobranca.setBillingAddressCity(userBilling.getUserBillingCity());
+		enderecoDeCobranca.setBillingAddressState(userBilling.getUserBillingState());
+		enderecoDeCobranca.setBillingAddressCountry(userBilling.getUserBillingCountry());
+		enderecoDeCobranca.setBillingAddressZipcode(userBilling.getUserBillingZipcode());
 		
-		return billingAddress;
+		return enderecoDeCobranca;
 	}
 
 }
