@@ -27,20 +27,18 @@
 			<div class="col-xs-12">
 				<div class="row">
 					<div class="col-xs-6 text-left">
-						<a class="btn btn-warning" th:href="@{/bookshelf}">Continuar a Comprar</a>
+						<a class="btn btn-warning" th:href="@{/produtoLista}">Voltar para os produtos</a>
 					</div>
 					<div class="col-xs-6 text-right">
 						<a class="btn btn-primary"
-							th:href="@{/checkout(id=${shoppingCart.id})}">Check Out</a>
+							th:href="@{/checkout(id=${shoppingCart.id})}">Continuar </a>
 					</div>
-					<br />
+					<br/>
 					<div th:if="${notEnoughStock}" class="alert alert-warning">
-						Oops, some of the products don't have enough stock. Please update
-						product quantity.</div>
-					<div th:if="${emptyCart}" class="alert alert-warning">Oops,
-						your cart is empty. See if you can find what you like in the
-						bookshelf and add them to cart.</div>
-
+						Eita, alguns dos produtos não têm estoque suficiente.</div>
+					<div th:if="${emptyCart}" class="alert alert-warning">carrinho está vazio. Veja se você pode encontrar o que você gosta.
+                                        </div>
+                                        
 					<br /> <br />
 					<div class="row">
 						<div class="col-xs-8 ">
@@ -54,13 +52,13 @@
 						</div>
 					</div>
 
-					<!--**************** display products in cart ****************-->
+					<!--**************** Para Produto no carrinho ****************-->
 
 					<div class="row" th:each="cartItem : ${cartItemList}">
-						<form th:action="@{/shoppingCart/updateCartItem}" method="post">
+						<form th:action="@{/carrinhoCompra/updateCartItem}" method="post">
 							<hr />
 							<div class="col-xs-2">
-								<a th:href="@{bookDetail(id=${cartItem.book.id})}"> <img
+								<a th:href="@{detalheProduto(id=${cartItem.book.id})}"> <img
 									style="width:70px;"
 									class="img-responsive shelf-book center-block"
 									th:src="#{adminPath}+@{/image/book/}+
@@ -69,7 +67,7 @@
 							</div>
 							<div class="col-xs-6">
 								<div style="margin-left:50px;">
-								<a th:href="@{/bookDetail?id=}+${cartItem.book.id}"><h4 th:text="${cartItem.book.title}"></h4></a>
+								<a th:href="@{/detalheProduto?id=}+${cartItem.book.id}"><h4 th:text="${cartItem.book.title}"></h4></a>
 								<p th:if="${cartItem.book.inStockNumber&gt;10}"
 									style="color: green;">Em estoque</p>
 								<p
@@ -79,7 +77,7 @@
 								</p>
 								<p th:if="${cartItem.book.inStockNumber==0}"
 									style="color: darkred;">Produto não disponível</p>
-								<a th:href="@{/shoppingCart/removeItem?id=}+${cartItem.id}">delete</a>
+								<a th:href="@{/carrinhoCompra/removeItem?id=}+${cartItem.id}">delete</a>
 								</div>
 							</div>
 

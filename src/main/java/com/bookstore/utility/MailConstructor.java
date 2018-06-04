@@ -40,7 +40,7 @@ public class MailConstructor {
 		
 	}
 	
-	public MimeMessagePreparator constructOrderConfirmationEmail (User user, Order order, Locale locale) {
+	public MimeMessagePreparator montarEmailConfirmaçãoDePedido (User user, Order order, Locale locale) {
 		Context context = new Context();
 		context.setVariable("order", order);
 		context.setVariable("user", user);

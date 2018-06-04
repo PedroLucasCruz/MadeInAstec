@@ -45,10 +45,10 @@ public class CheckoutController {
 	private Payment payment = new Payment();
 
 	@Autowired
-	private JavaMailSender mailSender;
+	private JavaMailSender remetendoDoCorreio;
 	
 	@Autowired
-	private MailConstructor mailConstructor;
+	private MailConstructor contrutorDeEmail;
 	
 	@Autowired
 	private UserService userService;
@@ -91,13 +91,13 @@ public class CheckoutController {
 
 		if (cartItemList.size() == 0) {
 			model.addAttribute("emptyCart", true);
-			return "forward:/shoppintCart/cart";
+			return "forward:/carrinhoCompra/carrinho";
 		}
 
 		for (CartItem cartItem : cartItemList) {
 			if (cartItem.getBook().getInStockNumber() < cartItem.getQty()) {
 				model.addAttribute("notEnoughStock", true);
-				return "forward:/shoppingCart/cart";
+				return "forward:/carrinhoCompra/carrinho";
 			}
 		}
 
@@ -187,11 +187,11 @@ public class CheckoutController {
 				|| billingAddress.getBillingAddressZipcode().isEmpty())
 			return "redirect:/checkout?id=" + shoppingCart.getId() + "&missingRequiredField=true";
 		
-		User user = userService.findByUsername(principal.getName());
+		User usuario = userService.findByUsername(principal.getName());
 		
-		Order order = orderService.createOrder(shoppingCart, shippingAddress, billingAddress, payment, shippingMethod, user);
+		Order order = orderService.createOrder(shoppingCart, shippingAddress, billingAddress, payment, shippingMethod, usuario);
 		
-		mailSender.send(mailConstructor.constructOrderConfirmationEmail(user, order, Locale.ENGLISH));
+		remetendoDoCorreio.send(contrutorDeEmail.montarEmailConfirmaçãoDePedido(usuario, order, Locale.ENGLISH));
 		
 		shoppingCartService.clearShoppingCart(shoppingCart);
 		
@@ -212,28 +212,28 @@ public class CheckoutController {
 	@RequestMapping("/setShippingAddress")
 	public String setShippingAddress(@RequestParam("userShippingId") Long userShippingId, Principal principal,
 			Model model) {
-		User user = userService.findByUsername(principal.getName());
+		User usuario = userService.findByUsername(principal.getName());
 		UserShipping userShipping = userShippingService.findById(userShippingId);
 
-		if (userShipping.getUser().getId() != user.getId()) {
+		if (userShipping.getUser().getId() != usuario.getId()) {
 			return "badRequestPage";
 		} else {
 			shippingAddressService.setByUserShipping(userShipping, shippingAddress);
 
-			List<CartItem> cartItemList = cartItemService.findByShoppingCart(user.getShoppingCart());
+			List<CartItem> cartItemList = cartItemService.findByShoppingCart(usuario.getShoppingCart());
 
 			model.addAttribute("shippingAddress", shippingAddress);
 			model.addAttribute("payment", payment);
 			model.addAttribute("billingAddress", billingAddress);
 			model.addAttribute("cartItemList", cartItemList);
-			model.addAttribute("shoppingCart", user.getShoppingCart());
+			model.addAttribute("shoppingCart", usuario.getShoppingCart());
 
 			List<String> stateList = USConstants.listOfUSStatesCode;
 			Collections.sort(stateList);
 			model.addAttribute("stateList", stateList);
 
-			List<UserShipping> userShippingList = user.getUserShippingList();
-			List<UserPayment> userPaymentList = user.getUserPaymentList();
+			List<UserShipping> userShippingList = usuario.getUserShippingList();
+			List<UserPayment> userPaymentList = usuario.getUserPaymentList();
 
 			model.addAttribute("userShippingList", userShippingList);
 			model.addAttribute("userPaymentList", userPaymentList);
@@ -257,16 +257,16 @@ public class CheckoutController {
 	@RequestMapping("/setPaymentMethod")
 	public String setPaymentMethod(@RequestParam("userPaymentId") Long userPaymentId, Principal principal,
 			Model model) {
-		User user = userService.findByUsername(principal.getName());
+		User usuario = userService.findByUsername(principal.getName());
 		UserPayment userPayment = userPaymentService.findById(userPaymentId);
 		UserBilling userBilling = userPayment.getUserBilling();
 
-		if (userPayment.getUser().getId() != user.getId()) {
+		if (userPayment.getUser().getId() != usuario.getId()) {
 			return "badRequestPage";
 		} else {
 			paymentService.setByUserPayment(userPayment, payment);
 
-			List<CartItem> cartItemList = cartItemService.findByShoppingCart(user.getShoppingCart());
+			List<CartItem> cartItemList = cartItemService.findByShoppingCart(usuario.getShoppingCart());
 
 			billingAddressService.setarPeloFaturamento(userBilling, billingAddress);
 
@@ -274,14 +274,14 @@ public class CheckoutController {
 			model.addAttribute("payment", payment);
 			model.addAttribute("billingAddress", billingAddress);
 			model.addAttribute("cartItemList", cartItemList);
-			model.addAttribute("shoppingCart", user.getShoppingCart());
+			model.addAttribute("shoppingCart", usuario.getShoppingCart());
 
 			List<String> stateList = USConstants.listOfUSStatesCode;
 			Collections.sort(stateList);
 			model.addAttribute("stateList", stateList);
 
-			List<UserShipping> userShippingList = user.getUserShippingList();
-			List<UserPayment> userPaymentList = user.getUserPaymentList();
+			List<UserShipping> userShippingList = usuario.getUserShippingList();
+			List<UserPayment> userPaymentList = usuario.getUserPaymentList();
 
 			model.addAttribute("userShippingList", userShippingList);
 			model.addAttribute("userPaymentList", userPaymentList);

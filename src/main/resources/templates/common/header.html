@@ -45,10 +45,10 @@
 						</form>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a th:href="@{/shoppingCart/cart}">CARRINHO</a></li>
+						<li><a th:href="@{/carrinhoCompra/carrinho}">CARRINHO</a></li>
 						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">MINHA CONTA</a></li>
 						<li><a sec:authorize="isAuthenticated()"
-							th:href="@{/myProfile}">MINHA CONTA</a></li>
+							th:href="@{/perfil}">MINHA CONTA</a></li>
 						<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">DESLOGAR</a></li>
 					</ul>
 				</div>

@@ -114,7 +114,7 @@ public class HomeController {
 		return "faq";
 	}
 	
-	@RequestMapping("/bookshelf")
+	@RequestMapping("/produtoLista")
 	public String bookshelf(Model model, Principal principal) {
 		if(principal != null) {
 			String username = principal.getName();
@@ -129,7 +129,7 @@ public class HomeController {
 		return "bookshelf";
 	}
 	
-	@RequestMapping("/bookDetail")
+	@RequestMapping("/detalheProduto")
 	public String bookDetail(
 			@PathParam("id") Long id, Model model, Principal principal
 			) {
@@ -189,7 +189,7 @@ public class HomeController {
 		return "myAccount";
 	}
 	
-	@RequestMapping("/myProfile")
+	@RequestMapping("/perfil")
 	public String myProfile(Model model, Principal principal) {
 		User user = userService.findByUsername(principal.getName());
 		model.addAttribute("user", user);
