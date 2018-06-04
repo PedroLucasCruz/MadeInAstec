@@ -88,11 +88,15 @@ public class HomeController {
 		model.addAttribute("classActiveLogin", true);
 		return "myAccount";
 	}
+        
+
+     
 	
 	@RequestMapping("/hours")
 	public String hours() {
 		return "hours";
-	}
+	}       
+               
 	
 	@RequestMapping("/faq")
 	public String faq() {

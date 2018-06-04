@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Bookstore</name>
+	<name>madeinastec</name>
 	<description>frontend part for our bookstore project</description>
 
 	<parent>
@@ -65,6 +65,17 @@
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
 		
+                
+                 <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+                
+                
+                
+                
+                
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>

@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     
 	@Autowired
 	private Environment env;
-
+        
 	@Autowired
 	private UserSecurityService userSecurityService;
 
@@ -36,8 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/",
 			"/newUser",
 			"/forgetPassword",
-			"/login",
-			"/fonts/**",
+			"/login",                           
+                        "/fonts/**",
 			"/bookshelf",
 			"/bookDetail/**",
 			"/hours",
@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable().cors().disable()
 			.formLogin().failureUrl("/login?error")
 			/*.defaultSuccessUrl("/")*/
-			.loginPage("/login").permitAll()
+			.loginPage("/login").permitAll().loginPage("/loginAdm").permitAll()
 			.and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/?logout").deleteCookies("remember-me").permitAll()
