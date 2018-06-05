@@ -110,41 +110,41 @@
                                                             th:text="${produto.title}"></h4>
                                                     </a>
                                                     <span th:text="${produto.publicationDate}">
-                                                        
+
                                                     </span>
-                                                    
+
                                                     <p th:text="${produto.author}">
-                                                        
+
                                                     </p>
                                                     <a th:href="@{/detalheProduto?id=}+${produto.id}">
-                                                        
+
                                                         <span th:text="${#strings.capitalize(produto.format)}">
-                                                                
-                                                            
+
+
                                                         </span>
-                                                    
+
                                                     </a> 
-                                                    
+
                                                     <span th:text="${produto.numberOfPages}">
-                                                        
+
                                                         <span> pages</span>
-                                                            
+
                                                     </span>
-                                                    
+
                                                     <br />
                                                     <a th:href="@{/detalheProduto?id=}+${produto.id}">
                                                         <span style="font-size: x-large; color: #db3208;">$
-                                                            
+
                                                             <span th:text="${#numbers.formatDecimal(produto.ourPrice, 0 , 'COMMA', 2, 'POINT')}">
-                                                                                                                                
+
                                                             </span></span>
                                                     </a>
-                                                    
+
                                                     <span style="text-decoration: line-through;">$
                                                         <span th:text="${#numbers.formatDecimal(produto.listPrice, 0 , 'COMMA', 2, 'POINT')}">
-                                                            
+
                                                         </span>
-                                                            
+
                                                     </span>
                                                     <p th:utext="${#strings.abbreviate(produto.description, 1000)}"></p>
                                                 </div>
@@ -163,22 +163,22 @@
         <!-- end of container -->
         <div th:replace="common/header :: footer"/>
         <div th:replace="common/header :: body-bottom-scripts" />
-        
-        <script>
-            $(document).ready(function () {
-                $('#produtokLista').DataTable({
-                    "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
-                    "ordering": false,
-                    stateSave: true
-                });
 
-                $("#produtokLista").on('page.dt', function () {
-                    $('html, body').animate({
-                        scrollTop: $('#produtokLista').offset().top
-                    }, 200);
-                });
-            });
-        </script>
+        <!--        <script>
+                    $(document).ready(function () {
+                        $('#produtokLista').DataTable({
+                            "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
+                            "ordering": false,
+                            stateSave: true
+                        });
         
+                        $("#produtokLista").on('page.dt', function () {
+                            $('html, body').animate({
+                                scrollTop: $('#produtokLista').offset().top
+                            }, 200);
+                        });
+                    });
+                </script>-->
+
     </body>
 </html>

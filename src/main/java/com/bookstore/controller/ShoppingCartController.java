@@ -79,7 +79,7 @@ public class ShoppingCartController {
 		cartItem.setQty(qty);
 		cartItemService.updateCartItem(cartItem);
 		
-		return "forward:/shoppingCart/cart";
+		return "forward:/carrinhoCompra/carrinho";
 	}
 	
 	@RequestMapping("/removeItem")

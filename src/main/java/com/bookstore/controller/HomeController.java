@@ -90,8 +90,7 @@ public class HomeController {
 		model.addAttribute("produtokLista", Lista);
 		model.addAttribute("activeAll",true);
             
-		return "index";
-                
+		return "index";                
 	}
 
 	@RequestMapping("/login")
