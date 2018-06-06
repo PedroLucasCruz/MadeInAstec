@@ -45,9 +45,9 @@ public class BookServiceImpl implements BookService{
 		
 		List<Produto> activeBookList = new ArrayList<>();
 		
-		for (Produto book: bookList) {
-			if(book.isActive()) {
-				activeBookList.add(book);
+		for (Produto produto: bookList) {
+			if(produto.isActive()) {
+				activeBookList.add(produto);
 			}
 		}
 		
@@ -58,9 +58,9 @@ public class BookServiceImpl implements BookService{
 		List<Produto> bookList = bookRepository.findByTitleContaining(title);
 List<Produto> activeBookList = new ArrayList<>();
 		
-		for (Produto book: bookList) {
-			if(book.isActive()) {
-				activeBookList.add(book);
+		for (Produto produto: bookList) {
+			if(produto.isActive()) {
+				activeBookList.add(produto);
 			}
 		}
 		
