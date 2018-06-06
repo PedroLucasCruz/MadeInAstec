@@ -8,15 +8,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class BookToCartItem {
+public class ProdutoItemCarrinho {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name="book_id")
-	private Book book;
+	@JoinColumn(name="produto_id")
+	private Produto produto;
 	
 	@ManyToOne
 	@JoinColumn(name="cart_item_id")
@@ -30,12 +30,12 @@ public class BookToCartItem {
 		this.id = id;
 	}
 
-	public Book getBook() {
-		return book;
+	public Produto getProduto() {
+		return produto;
 	}
 
-	public void setBook(Book book) {
-		this.book = book;
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 
 	public CartItem getCartItem() {

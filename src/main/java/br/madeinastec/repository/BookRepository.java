@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import br.madeinastec.domain.Book;
+import br.madeinastec.domain.Produto;
 
-public interface BookRepository extends CrudRepository<Book, Long>{
-	List<Book> findByCategory(String category);
+public interface BookRepository extends CrudRepository<Produto, Long>{
+	List<Produto> findByCategory(String category);
 	
-	List<Book> findByTitleContaining(String title);
+	List<Produto> findByTitleContaining(String title);
 }

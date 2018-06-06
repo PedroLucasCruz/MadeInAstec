@@ -2,7 +2,7 @@ package br.madeinastec.service;
 
 import java.util.List;
 
-import br.madeinastec.domain.Book;
+import br.madeinastec.domain.Produto;
 import br.madeinastec.domain.CartItem;
 import br.madeinastec.domain.Order;
 import br.madeinastec.domain.ShoppingCart;
@@ -13,7 +13,7 @@ public interface CartItemService {
 	
 	CartItem updateCartItem(CartItem cartItem);
 	
-	CartItem addBookToCartItem(Book book, User user, int qty);
+	CartItem addBookToCartItem(Produto book, User user, int qty);
 	
 	CartItem findById(Long id);
 	

@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.madeinastec.domain.Book;
+import br.madeinastec.domain.Produto;
 import br.madeinastec.repository.BookRepository;
 import br.madeinastec.service.BookService;
 
@@ -19,15 +19,15 @@ public class BookServiceImpl implements BookService{
 		bookRepository.delete(id);
 	}
         
-        public Book salvar(Book book) {
+        public Produto salvar(Produto book) {
 		return bookRepository.save(book);
 	}
         
-	public List<Book> findAll() {
-		List<Book> bookList = (List<Book>) bookRepository.findAll();
-		List<Book> activeBookList = new ArrayList<>();
+	public List<Produto> findAll() {
+		List<Produto> bookList = (List<Produto>) bookRepository.findAll();
+		List<Produto> activeBookList = new ArrayList<>();
 		
-		for (Book book: bookList) {
+		for (Produto book: bookList) {
 			if(book.isActive()) {
 				activeBookList.add(book);
 			}
@@ -36,16 +36,16 @@ public class BookServiceImpl implements BookService{
 		return activeBookList;
 	}
 	
-	public Book findOne(Long id) {
+	public Produto findOne(Long id) {
 		return bookRepository.findOne(id);
 	}
 
-	public List<Book> findByCategory(String category){
-		List<Book> bookList = bookRepository.findByCategory(category);
+	public List<Produto> findByCategory(String category){
+		List<Produto> bookList = bookRepository.findByCategory(category);
 		
-		List<Book> activeBookList = new ArrayList<>();
+		List<Produto> activeBookList = new ArrayList<>();
 		
-		for (Book book: bookList) {
+		for (Produto book: bookList) {
 			if(book.isActive()) {
 				activeBookList.add(book);
 			}
@@ -54,11 +54,11 @@ public class BookServiceImpl implements BookService{
 		return activeBookList;
 	}
 	
-	public List<Book> blurrySearch(String title) {
-		List<Book> bookList = bookRepository.findByTitleContaining(title);
-List<Book> activeBookList = new ArrayList<>();
+	public List<Produto> blurrySearch(String title) {
+		List<Produto> bookList = bookRepository.findByTitleContaining(title);
+List<Produto> activeBookList = new ArrayList<>();
 		
-		for (Book book: bookList) {
+		for (Produto book: bookList) {
 			if(book.isActive()) {
 				activeBookList.add(book);
 			}

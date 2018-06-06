@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.madeinastec.domain.Book;
+import br.madeinastec.domain.Produto;
 import br.madeinastec.domain.CartItem;
 import br.madeinastec.domain.Order;
 import br.madeinastec.domain.User;
@@ -86,7 +86,7 @@ public class HomeController {
 			model.addAttribute("user", user);
 		}
 		
-		List<Book> Lista = bookService.findAll();
+		List<Produto> Lista = bookService.findAll();
 		model.addAttribute("produtokLista", Lista);
 		model.addAttribute("activeAll",true);
             
@@ -121,7 +121,7 @@ public class HomeController {
 			model.addAttribute("user", user);
 		}
 		
-		List<Book> bookList = bookService.findAll();
+		List<Produto> bookList = bookService.findAll();
 		model.addAttribute("bookList", bookList);
 		model.addAttribute("activeAll",true);
 		
@@ -138,7 +138,7 @@ public class HomeController {
 			model.addAttribute("user", user);
 		}
 		
-		Book book = bookService.findOne(id);
+		Produto book = bookService.findOne(id);
 		
 		model.addAttribute("book", book);
 		

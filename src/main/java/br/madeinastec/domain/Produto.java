@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Book {
+public class Produto {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -38,12 +38,12 @@ public class Book {
 	private int inStockNumber;
 	
 	@Transient
-	private MultipartFile bookImage;
+	private MultipartFile produtoImage;
 	
 	
-	@OneToMany(mappedBy = "book")
+	@OneToMany(mappedBy = "produto")
 	@JsonIgnore
-	private List<BookToCartItem> bookToCartItemList;
+	private List<ProdutoItemCarrinho> ProdutoItemCarrinho;
 
 	public Long getId() {
 		return id;
@@ -167,20 +167,20 @@ public class Book {
 		this.inStockNumber = inStockNumber;
 	}
 
-	public MultipartFile getBookImage() {
-		return bookImage;
+	public MultipartFile getProdutoImage() {
+		return produtoImage;
 	}
 
-	public void setBookImage(MultipartFile bookImage) {
-		this.bookImage = bookImage;
+	public void setProdutoImage(MultipartFile produtoImage) {
+		this.produtoImage = produtoImage;
 	}
 
-	public List<BookToCartItem> getBookToCartItemList() {
-		return bookToCartItemList;
+	public List<ProdutoItemCarrinho> getProdutoToCartItemList() {
+		return ProdutoItemCarrinho;
 	}
 
-	public void setBookToCartItemList(List<BookToCartItem> bookToCartItemList) {
-		this.bookToCartItemList = bookToCartItemList;
+	public void setProdutoToCartItemList(List<ProdutoItemCarrinho> ProdutoItemCarrinhoLista) {
+		this.ProdutoItemCarrinho = ProdutoItemCarrinhoLista;
 	}
 	
 	

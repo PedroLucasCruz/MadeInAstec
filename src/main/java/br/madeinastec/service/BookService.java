@@ -2,19 +2,19 @@ package br.madeinastec.service;
 
 import java.util.List;
 
-import br.madeinastec.domain.Book;
+import br.madeinastec.domain.Produto;
 
 public interface BookService {
     
-	List<Book> findAll ();
+	List<Produto> findAll ();
 	
-        Book salvar(Book book);
+        Produto salvar(Produto book);
         
-	Book findOne(Long id);
+	Produto findOne(Long id);
 	
-	List<Book> findByCategory(String category);
+	List<Produto> findByCategory(String category);
 	
-	List<Book> blurrySearch(String title);
+	List<Produto> blurrySearch(String title);
         
         void removeOne(Long id);
 }

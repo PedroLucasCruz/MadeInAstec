@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.madeinastec.domain.BillingAddress;
-import br.madeinastec.domain.Book;
+import br.madeinastec.domain.Produto;
 import br.madeinastec.domain.CartItem;
 import br.madeinastec.domain.Order;
 import br.madeinastec.domain.Payment;
@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService{
 		List<CartItem> cartItemList = cartItemService.findByShoppingCart(shoppingCart);
 		
 		for(CartItem cartItem : cartItemList) {
-			Book book = cartItem.getBook();
+			Produto book = cartItem.getBook();
 			cartItem.setOrder(order);
 			book.setInStockNumber(book.getInStockNumber() - cartItem.getQty());
 		}
