@@ -44,9 +44,9 @@ import com.bookstore.service.UserPaymentService;
 import com.bookstore.service.UserService;
 import com.bookstore.service.UserShippingService;
 import com.bookstore.service.impl.UserSecurityService;
-import com.bookstore.utility.MailConstructor;
+import com.bookstore.utility.ContrutorDeDadosEmail;
 import com.bookstore.utility.SecurityUtility;
-import com.bookstore.utility.USConstants;
+import com.bookstore.utility.BREstados;
 
 @Controller
 public class HomeController {
@@ -55,7 +55,7 @@ public class HomeController {
 	private JavaMailSender mailSender;
 	
 	@Autowired
-	private MailConstructor mailConstructor;
+	private ContrutorDeDadosEmail mailConstructor;
 
 	@Autowired
 	private UserService userService;
@@ -166,9 +166,9 @@ public class HomeController {
 			return "myAccount";
 		}
 		
-		String password = SecurityUtility.randomPassword();
+		String password = SecurityUtility.senhaAleatoria();
 		
-		String encryptedPassword = SecurityUtility.passwordEncoder().encode(password);
+		String encryptedPassword = SecurityUtility.decodificadorDeSenha().encode(password);
 		user.setPassword(encryptedPassword);
 		
 		userService.save(user);
@@ -202,9 +202,9 @@ public class HomeController {
 		model.addAttribute("listOfCreditCards", true);
 		model.addAttribute("listOfShippingAddresses", true);
 		
-		List<String> stateList = USConstants.listOfUSStatesCode;
-		Collections.sort(stateList);
-		model.addAttribute("stateList", stateList);
+		List<String> listaEstados = BREstados.listaSiglaBR;
+		Collections.sort(listaEstados);
+		model.addAttribute("listaEstados", listaEstados);
 		model.addAttribute("classActiveEdit", true);
 		
 		return "myProfile";
@@ -262,9 +262,9 @@ public class HomeController {
 		model.addAttribute("userBilling", userBilling);
 		model.addAttribute("userPayment", userPayment);
 		
-		List<String> stateList = USConstants.listOfUSStatesCode;
-		Collections.sort(stateList);
-		model.addAttribute("stateList", stateList);
+		List<String> listaEstados = BREstados.listaSiglaBR;
+		Collections.sort(listaEstados);
+		model.addAttribute("listaEstados", listaEstados);
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
 		model.addAttribute("orderList", user.getOrderList());
@@ -287,9 +287,9 @@ public class HomeController {
 		
 		model.addAttribute("userShipping", userShipping);
 		
-		List<String> stateList = USConstants.listOfUSStatesCode;
-		Collections.sort(stateList);
-		model.addAttribute("stateList", stateList);
+		List<String> listaEstados = BREstados.listaSiglaBR;
+		Collections.sort(listaEstados);
+		model.addAttribute("listaEstados", listaEstados);
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
 		model.addAttribute("orderList", user.getOrderList());
@@ -352,9 +352,9 @@ public class HomeController {
 			model.addAttribute("userPayment", userPayment);
 			model.addAttribute("userBilling", userBilling);
 			
-			List<String> stateList = USConstants.listOfUSStatesCode;
-			Collections.sort(stateList);
-			model.addAttribute("stateList", stateList);
+			List<String> listaEstados = BREstados.listaSiglaBR;
+			Collections.sort(listaEstados);
+			model.addAttribute("listaEstados", listaEstados);
 			
 			model.addAttribute("addNewCreditCard", true);
 			model.addAttribute("classActiveBilling", true);
@@ -382,9 +382,9 @@ public class HomeController {
 			
 			model.addAttribute("userShipping", userShipping);
 			
-			List<String> stateList = USConstants.listOfUSStatesCode;
-			Collections.sort(stateList);
-			model.addAttribute("stateList", stateList);
+			List<String> listaEstados = BREstados.listaSiglaBR;
+			Collections.sort(listaEstados);
+			model.addAttribute("listaEstados", listaEstados);
 			
 			model.addAttribute("addNewShippingAddress", true);
 			model.addAttribute("classActiveShipping", true);
@@ -487,7 +487,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/newUser", method = RequestMethod.POST)
-	public String newUserPost(
+	public String novoUsuarioPost(
 			HttpServletRequest request,
 			@ModelAttribute("email") String userEmail,
 			@ModelAttribute("username") String username,
@@ -513,9 +513,9 @@ public class HomeController {
 		user.setUsername(username);
 		user.setEmail(userEmail);
 		
-		String password = SecurityUtility.randomPassword();
+		String password = SecurityUtility.senhaAleatoria();
 		
-		String encryptedPassword = SecurityUtility.passwordEncoder().encode(password);
+		String encryptedPassword = SecurityUtility.decodificadorDeSenha().encode(password);
 		user.setPassword(encryptedPassword);
 		
 		Role role = new Role();
@@ -541,8 +541,8 @@ public class HomeController {
 	}
 	
 
-	@RequestMapping("/newUser")
-	public String newUser(Locale locale, @RequestParam("token") String token, Model model) {
+	@RequestMapping("/novoUsuario")
+	public String novoUsuario(Locale locale, @RequestParam("token") String token, Model model) {
 		PasswordResetToken passToken = userService.getPasswordResetToken(token);
 
 		if (passToken == null) {
@@ -598,7 +598,7 @@ public class HomeController {
 		
 //		update password
 		if (newPassword != null && !newPassword.isEmpty() && !newPassword.equals("")){
-			BCryptPasswordEncoder passwordEncoder = SecurityUtility.passwordEncoder();
+			BCryptPasswordEncoder passwordEncoder = SecurityUtility.decodificadorDeSenha();
 			String dbPassword = currentUser.getPassword();
 			if(passwordEncoder.matches(user.getPassword(), dbPassword)){
 				currentUser.setPassword(passwordEncoder.encode(newPassword));
@@ -657,9 +657,9 @@ public class HomeController {
 			UserShipping userShipping = new UserShipping();
 			model.addAttribute("userShipping", userShipping);
 			
-			List<String> stateList = USConstants.listOfUSStatesCode;
-			Collections.sort(stateList);
-			model.addAttribute("stateList", stateList);
+			List<String> listaEstados = BREstados.listaSiglaBR;
+			Collections.sort(listaEstados);
+			model.addAttribute("listaEstados", listaEstados);
 			
 			model.addAttribute("listOfShippingAddresses", true);
 			model.addAttribute("classActiveOrders", true);

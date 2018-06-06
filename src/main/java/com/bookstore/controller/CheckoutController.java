@@ -34,8 +34,8 @@ import com.bookstore.service.ShoppingCartService;
 import com.bookstore.service.UserPaymentService;
 import com.bookstore.service.UserService;
 import com.bookstore.service.UserShippingService;
-import com.bookstore.utility.MailConstructor;
-import com.bookstore.utility.USConstants;
+import com.bookstore.utility.ContrutorDeDadosEmail;
+import com.bookstore.utility.BREstados;
 
 @Controller
 public class CheckoutController {
@@ -48,7 +48,7 @@ public class CheckoutController {
 	private JavaMailSender remetendoDoCorreio;
 	
 	@Autowired
-	private MailConstructor contrutorDeEmail;
+	private ContrutorDeDadosEmail contrutorDeEmail;
 	
 	@Autowired
 	private UserService userService;
@@ -140,7 +140,7 @@ public class CheckoutController {
 		model.addAttribute("cartItemList", cartItemList);
 		model.addAttribute("shoppingCart", user.getShoppingCart());
 
-		List<String> stateList = USConstants.listOfUSStatesCode;
+		List<String> stateList = BREstados.listaSiglaBR;
 		Collections.sort(stateList);
 		model.addAttribute("stateList", stateList);
 
@@ -228,7 +228,7 @@ public class CheckoutController {
 			model.addAttribute("cartItemList", cartItemList);
 			model.addAttribute("shoppingCart", usuario.getShoppingCart());
 
-			List<String> stateList = USConstants.listOfUSStatesCode;
+			List<String> stateList = BREstados.listaSiglaBR;
 			Collections.sort(stateList);
 			model.addAttribute("stateList", stateList);
 
@@ -276,7 +276,7 @@ public class CheckoutController {
 			model.addAttribute("cartItemList", cartItemList);
 			model.addAttribute("shoppingCart", usuario.getShoppingCart());
 
-			List<String> stateList = USConstants.listOfUSStatesCode;
+			List<String> stateList = BREstados.listaSiglaBR;
 			Collections.sort(stateList);
 			model.addAttribute("stateList", stateList);
 

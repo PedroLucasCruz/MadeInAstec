@@ -18,7 +18,7 @@ import com.bookstore.domain.Order;
 import com.bookstore.domain.User;
 
 @Component
-public class MailConstructor {
+public class ContrutorDeDadosEmail {
 	@Autowired
 	private Environment env;
 	
@@ -30,10 +30,10 @@ public class MailConstructor {
 			) {
 		
 		String url = contextPath + "/newUser?token="+token;
-		String message = "\nPlease click on this link to verify your email and edit your personal information. Your password is: \n"+password;
+		String message = "\nClique no link para acessar suas informações pessoais e editar: \n Sua senha é: "+password;
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setTo(user.getEmail());
-		email.setSubject("Le's Bookstore - New User");
+		email.setSubject("Made in astec - Novo usuário");
 		email.setText(url+message);
 		email.setFrom(env.getProperty("support.email"));
 		return email;
@@ -47,17 +47,17 @@ public class MailConstructor {
 		context.setVariable("cartItemList", order.getCartItemList());
 		String text = templateEngine.process("orderConfirmationEmailTemplate", context);
 		
-		MimeMessagePreparator messagePreparator = new MimeMessagePreparator() {
+		MimeMessagePreparator prepararMensagem = new MimeMessagePreparator() {
 			@Override
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 				MimeMessageHelper email = new MimeMessageHelper(mimeMessage);
 				email.setTo(user.getEmail());
-				email.setSubject("Order Confirmation - "+order.getId());
+				email.setSubject("Ordem de confirmação - "+order.getId());
 				email.setText(text, true);
-				email.setFrom(new InternetAddress("ray.deng83@gmail.com"));
+				email.setFrom(new InternetAddress("teste4041404@gmail.com"));
 			}
 		};
 		
-		return messagePreparator;
+		return prepararMensagem;
 	}
 }

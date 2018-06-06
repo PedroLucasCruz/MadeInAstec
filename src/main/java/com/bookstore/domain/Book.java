@@ -27,8 +27,7 @@ public class Book {
 	private String language;
 	private String category;
 	private int numberOfPages;
-	private String format;
-	private int isbn;
+	private String format;	
 	private double shippingWeight;
 	private double listPrice;
 	private double ourPrice;
@@ -118,13 +117,7 @@ public class Book {
 		this.format = format;
 	}
 
-	public int getIsbn() {
-		return isbn;
-	}
-
-	public void setIsbn(int isbn) {
-		this.isbn = isbn;
-	}
+	
 
 	public double getShippingWeight() {
 		return shippingWeight;
