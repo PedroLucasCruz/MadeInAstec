@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Produto {
+public class Book {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -41,7 +41,7 @@ public class Produto {
 	private MultipartFile produtoImage;
 	
 	
-	@OneToMany(mappedBy = "produto")
+	@OneToMany(mappedBy = "book")
 	@JsonIgnore
 	private List<ProdutoItemCarrinho> ProdutoItemCarrinho;
 

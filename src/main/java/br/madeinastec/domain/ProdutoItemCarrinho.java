@@ -15,8 +15,8 @@ public class ProdutoItemCarrinho {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name="produto_id")
-	private Produto produto;
+	@JoinColumn(name="book_id")
+	private Book book;
 	
 	@ManyToOne
 	@JoinColumn(name="cart_item_id")
@@ -30,12 +30,12 @@ public class ProdutoItemCarrinho {
 		this.id = id;
 	}
 
-	public Produto getProduto() {
-		return produto;
+	public Book getProduto() {
+		return book;
 	}
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+	public void setProduto(Book produto) {
+		this.book = produto;
 	}
 
 	public CartItem getCartItem() {

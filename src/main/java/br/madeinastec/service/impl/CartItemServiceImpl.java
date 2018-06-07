@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.madeinastec.domain.Produto;
+import br.madeinastec.domain.Book;
 import br.madeinastec.domain.ProdutoItemCarrinho;
 import br.madeinastec.domain.CartItem;
 import br.madeinastec.domain.Order;
@@ -40,7 +40,7 @@ public class CartItemServiceImpl implements CartItemService{
 		return cartItem;
 	}
 	
-	public CartItem addBookToCartItem(Produto book, User user, int qty) {
+	public CartItem addBookToCartItem(Book book, User user, int qty) {
 		List<CartItem> cartItemList = findByShoppingCart(user.getShoppingCart());
 		
 		for (CartItem cartItem : cartItemList) {

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.madeinastec.domain.Produto;
+import br.madeinastec.domain.Book;
 import br.madeinastec.domain.CartItem;
 import br.madeinastec.domain.ShoppingCart;
 import br.madeinastec.domain.User;
@@ -52,7 +52,7 @@ public class ShoppingCartController {
 
 	@RequestMapping("/addItem")
 	public String addItem(
-			@ModelAttribute("book") Produto book,
+			@ModelAttribute("book") Book book,
 			@ModelAttribute("qty") String qty,
 			Model model, Principal principal
 			) {

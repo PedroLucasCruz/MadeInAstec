@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.madeinastec.domain.Produto;
+import br.madeinastec.domain.Book;
 import br.madeinastec.domain.User;
 import br.madeinastec.service.BookService;
 import br.madeinastec.service.UserService;
@@ -39,7 +39,7 @@ public class SearchController {
 		classActiveCategory = classActiveCategory.replaceAll("&", "");
 		model.addAttribute(classActiveCategory, true);
 		
-		List<Produto> bookList = bookService.findByCategory(category);
+		List<Book> bookList = bookService.findByCategory(category);
 		
 		if (bookList.isEmpty()) {
 			model.addAttribute("emptyList", true);
@@ -62,7 +62,7 @@ public class SearchController {
 			model.addAttribute("user", user);
 		}
 		
-		List<Produto> bookList = bookService.blurrySearch(keyword);
+		List<Book> bookList = bookService.blurrySearch(keyword);
 		
 		if (bookList.isEmpty()) {
 			model.addAttribute("emptyList", true);
